@@ -48,22 +48,20 @@ int ImagerMac::writeImage() {
 int ImagerMac::format(int ch) {
 	int result = 0;
 	std::cout << "Formatting the USB....\n";
-	std::string str = "diskutil unmountDisk " + this->disk;
-	std::string str1 = "diskutil eraseDisk ExFAT Drive " + this->disk;
+	std::string str = "";
 	this->ex= NULL;
-//	try {
-//		result= system(str.c_str());
-//	} catch (std::exception &e) {
-//		std::cout << "formattingUSB throwed: " << e.what() << "\n";
-//		this->ex= &e;
-//	}
-	if (this->ex== NULL){
-		try {
-			result= system(str1.c_str());
-		} catch (std::exception &e) {
-			std::cout << "formattingUSB throwed: " << e.what() << "\n";
-			this->ex= &e;
+	try {
+		if (ch== 0){
+			str= "diskutil eraseDisk APFS drive " + this->disk;
+		}else if (ch== 1){
+			str= "diskutil eraseDisk HFS+ drive " + this->disk;
+		}else{
+			str= "diskutil eraseDisk ExFat drive " + this->disk;
 		}
+		result= system(str.c_str());
+	}catch (std::exception &e) {
+		std::cout << "formattingUSB throwed: " << e.what() << "\n";
+		this->ex= &e;
 	}
 	return result;
 }

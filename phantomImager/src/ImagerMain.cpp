@@ -28,12 +28,12 @@ int main(int argc, char **argv) {
 	} catch (std::exception &e) {
 		std::cout << "Constructor throwed: " << e.what() << '\n';
 	}
-	try {
-		result = imager->takeImage();
-		std::cout << "taking image result:'" << result << "'\n";
-	} catch (std::exception &e) {
-		std::cout << "takeImage throwed: " << e.what() << '\n';
-	}
+//	try {
+//		result = imager->takeImage();
+//		std::cout << "taking image result:'" << result << "'\n";
+//	} catch (std::exception &e) {
+//		std::cout << "takeImage throwed: " << e.what() << '\n';
+//	}
 	try {
 		int choice = 1;
 		std::cout << "Select one:\n";
@@ -51,12 +51,12 @@ int main(int argc, char **argv) {
 	} catch (std::exception &e) {
 		std::cout << "formattingUsb throwed: " << e.what() << '\n';
 	}
-	try {
-		result = imager->writeImage();
-		std::cout << "writing image result:'" << result << "'\n";
-	} catch (std::exception &e) {
-		std::cout << "writingImage throwed: " << e.what() << '\n';
-	}
+//	try {
+//		result = imager->writeImage();
+//		std::cout << "writing image result:'" << result << "'\n";
+//	} catch (std::exception &e) {
+//		std::cout << "writingImage throwed: " << e.what() << '\n';
+//	}
 //		try {
 //			result = imager->makeBootable();
 //			std::cout << "makeBootable result:'" << result << "'\n";
