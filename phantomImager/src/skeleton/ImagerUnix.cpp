@@ -27,7 +27,7 @@ int ImagerUnix::writeImage() {
 	int result = 0;
 	std::cout << "Writing  image...\n";
 	std::string str = "dd if=\"" + this->imgFile + "\" of=\"" + this->disk
-			+ "\"  bs=" + std::to_string(this->bufferSize) + "K conv=sync";
+			+ "\"  bs=" + std::to_string(this->bufferSize) + "K oflag=sync";
 	try {
 		result = system(str.c_str());
 	} catch (std::exception &e) {
