@@ -21,7 +21,6 @@ public:
 	virtual int takeImage() = 0;
 	virtual int writeImage() = 0;
 	virtual int format(int) = 0;
-	virtual int makeBootable() = 0;
 	virtual int getClassType()= 0;
 
 
@@ -56,9 +55,9 @@ public:
 		this->overwrite = overwrite;
 	}
 
-//	inline  const std::exception*& getException()  {
-//		return ex;
-//	}
+	inline std::exception*& getException()  {
+		return ex;
+	}
 
 };
 

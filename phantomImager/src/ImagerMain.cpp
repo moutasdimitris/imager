@@ -51,19 +51,12 @@ int main(int argc, char **argv) {
 	} catch (std::exception &e) {
 		std::cout << "formattingUsb throwed: " << e.what() << '\n';
 	}
-//	try {
-//		result = imager->writeImage();
-//		std::cout << "writing image result:'" << result << "'\n";
-//	} catch (std::exception &e) {
-//		std::cout << "writingImage throwed: " << e.what() << '\n';
-//	}
-//		try {
-//			result = imager->makeBootable();
-//			std::cout << "makeBootable result:'" << result << "'\n";
-//		} catch (std::exception &e) {
-//			std::cout << "makeBootable throwed: " << e.what() << '\n';
-//		}
-	//system("PAUSE");
+	try {
+		result = imager->writeImage();
+		std::cout << "writing image result:'" << result << "'\n";
+	} catch (std::exception &e) {
+		std::cout << "writingImage throwed: " << e.what() << '\n';
+	}
 	delete (imager);
 	return 0;
 }

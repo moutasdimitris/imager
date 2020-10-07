@@ -66,7 +66,4 @@ int ImagerMac::format(int ch) {
 	return result;
 }
 
-int ImagerMac::makeBootable() {
-	return 0;
-}
 

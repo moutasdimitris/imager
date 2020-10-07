@@ -14,7 +14,6 @@ public:
 	int takeImage();
 	int writeImage();
 	int format(int);
-	int makeBootable();
 	inline int getClassType() {
 		return 2;
 	}

@@ -68,6 +68,4 @@ int ImagerWin::format(int ch) {
 	return result;
 }
 
-int ImagerWin::makeBootable() {
-	return 0;
-}
+

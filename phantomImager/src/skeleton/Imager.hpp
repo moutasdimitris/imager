@@ -20,7 +20,6 @@ public:
 	int takeImage();
 	int writeImage();
 	int format(int);
-	int makeBootable();
 	int getClassType();
 	void setBufferSize(int);
 };

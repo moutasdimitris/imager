@@ -25,10 +25,6 @@ int Imager::format(int ch) {
 	return this->imager->format(ch);
 }
 
-int Imager::makeBootable() {
-	return 0;
-}
-
 int Imager::getClassType() {
 	return this->imager->getClassType();
 }

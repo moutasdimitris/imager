@@ -23,7 +23,5 @@ int ImagerPhantom::format(int ch) {
 	return 0;
 }
 
-int ImagerPhantom::makeBootable() {
-	return 0;
-}
+
 

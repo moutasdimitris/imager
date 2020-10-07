@@ -66,24 +66,3 @@ int ImagerUnix::format(int ch) {
 	return result;
 }
 
-int ImagerUnix::makeBootable() {
-	int result = 0;
-	std::string str = "dd bs=" + std::to_string(this->bufferSize) + "K  if="
-			+ this->imgFile + " of=" + this->disk
-			+ " status=progress oflag=sync";
-	std::string unmount = "umount " + this->disk;
-	std::string mount = "mount " + this->disk + " /mnt";
-	this->ex= NULL;
-	try {
-		result = system(unmount.c_str());
-		if (result == 0) {
-			result = system(str.c_str());
-			result = system(mount.c_str());
-		}
-	} catch (std::exception &e) {
-		std::cout << "'makeBootable' throwed: " << e.what() << '\n';
-		this->ex= &e;
-	}
-	return result;
-}
-
