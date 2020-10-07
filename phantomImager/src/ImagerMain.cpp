@@ -10,20 +10,20 @@ int main(int argc, char **argv) {
 	/***
 	 * Windows paths
 	 */
-	std::string disk = "G:\\";
-	std::string imgFile = "C:\\Users\\mouta\\Desktop\\img2.wim";
+//	std::string disk = "G:\\";
+//	std::string imgFile = "C:\\Users\\mouta\\Desktop\\img2.wim";
 
 	/***
 	 * MacOS paths
 	 */
-//	std::string disk= "/dev/rdisk2";
-//	std::string out= "/Users/root1/Desktop/tom.iso";
+	std::string disk= "/dev/rdisk2";
+	std::string imgFile= "/Users/root1/Downloads/ubuntu-20.04-desktop-amd64.iso";
 	int result = 0;
 	Imager *imager = NULL;
 	try {
 		std::cout << "Starting constructor.\n";
 		imager = new Imager(disk, imgFile, true);
-		imager->setBufferSize(512);
+		imager->setBufferSize(2);
 		std::cout << "Imager class type:'" << imager->getClassType() << "'\n";
 	} catch (std::exception &e) {
 		std::cout << "Constructor throwed: " << e.what() << '\n';

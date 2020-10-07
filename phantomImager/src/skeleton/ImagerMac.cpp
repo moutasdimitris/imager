@@ -51,12 +51,12 @@ int ImagerMac::format(int ch) {
 	std::string str = "diskutil unmountDisk " + this->disk;
 	std::string str1 = "diskutil eraseDisk ExFAT Drive " + this->disk;
 	this->ex= NULL;
-	try {
-		result= system(str.c_str());
-	} catch (std::exception &e) {
-		std::cout << "formattingUSB throwed: " << e.what() << "\n";
-		this->ex= &e;
-	}
+//	try {
+//		result= system(str.c_str());
+//	} catch (std::exception &e) {
+//		std::cout << "formattingUSB throwed: " << e.what() << "\n";
+//		this->ex= &e;
+//	}
 	if (this->ex== NULL){
 		try {
 			result= system(str1.c_str());
