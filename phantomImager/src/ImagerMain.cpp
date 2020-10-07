@@ -5,13 +5,13 @@ int main(int argc, char **argv) {
 	/***
 	 * Unix-based Systems
 	 */
-	std::string disk= "/dev/sdd1";
-	std::string imgFile= "/home/dm/Desktop/ubuntu.iso";
+//	std::string disk= "/dev/sdd1";
+//	std::string imgFile= "/home/dm/Desktop/ubuntu.iso";
 	/***
 	 * Windows paths
 	 */
-//	std::string disk = "G:\\";
-//	std::string imgFile = "C:\\Users\\mouta\\Desktop\\img2.wim";
+	std::string disk = "G:\\";
+	std::string imgFile = "C:\\Users\\mouta\\Desktop\\img2.wim";
 
 	/***
 	 * MacOS paths

@@ -15,10 +15,12 @@ int ImagerWin::takeImage() {
 	std::cout << "Taking  image...\n";
 	std::string str = "dism /Capture-Image /ImageFile:\"" + this->imgFile
 			+ "\" /CaptureDir:" + this->disk + " /Name:MyData";
+	this->ex= NULL;
 	try {
 		result= system(str.c_str());
 	} catch (std::exception &e) {
 		std::cout << "'takeImage' throwed: " << e.what() << '\n';
+		this->ex= &e;
 	}
 	return result;
 }
@@ -29,6 +31,7 @@ int ImagerWin::writeImage() {
 	std::string str = "dism /mount-wim /wimfile:\"" + this->imgFile
 			+ "\" /Index:1 /mountdir:" + this->disk + "Data";
 	std::string str1 = "md " + this->disk + "\\Data";
+	this->ex= NULL;
 	try {
 		result=system(str1.c_str());
 		if (result== 0){
@@ -36,6 +39,7 @@ int ImagerWin::writeImage() {
 		}
 	} catch (std::exception &e) {
 		std::cout << "'writeImage' throwed: " << e.what() << '\n';
+		this->ex= &e;
 	}
 	return result;
 }
@@ -47,6 +51,7 @@ int ImagerWin::format(int ch) {
 	std::string disk= this->disk.c_str();
 	char s=this->disk[0];
 	std::string j(1, s);
+	this->ex= NULL;
 	try {
 		if (ch == 0) {
 			str = "format /fs:ntfs " + j+ ":";
@@ -58,6 +63,7 @@ int ImagerWin::format(int ch) {
 		result=system(str.c_str());
 	} catch (std::exception &e) {
 		std::cout << "'formattingImage' throwed: " << e.what() << '\n';
+		this->ex= &e;
 	}
 	return result;
 }
