@@ -23,17 +23,18 @@ int main(int argc, char **argv) {
 	try {
 		std::cout << "Starting constructor.\n";
 		imager = new Imager(disk, imgFile, true);
+		//If run in MACOS then setBufferSize set to 1 or 2 or a small number because bs=1m (no bs=512K)).
 		imager->setBufferSize(2);
 		std::cout << "Imager class type:'" << imager->getClassType() << "'\n";
 	} catch (std::exception &e) {
 		std::cout << "Constructor throwed: " << e.what() << '\n';
 	}
-//	try {
-//		result = imager->takeImage();
-//		std::cout << "taking image result:'" << result << "'\n";
-//	} catch (std::exception &e) {
-//		std::cout << "takeImage throwed: " << e.what() << '\n';
-//	}
+	try {
+		result = imager->takeImage();
+		std::cout << "taking image result:'" << result << "'\n";
+	} catch (std::exception &e) {
+		std::cout << "takeImage throwed: " << e.what() << '\n';
+	}
 	try {
 		int choice = 1;
 		std::cout << "Select one:\n";

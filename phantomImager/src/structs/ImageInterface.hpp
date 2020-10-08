@@ -5,7 +5,6 @@
 class ImageInterface {
 protected:
 	std::string disk, imgFile;
-	std::exception* ex;
 	bool overwrite;
 	int bufferSize;
 	int fs;
@@ -14,7 +13,6 @@ public:
 		overwrite = false;
 		bufferSize = 128;
 		fs = 1;
-		ex= NULL;
 	}
 	virtual ~ImageInterface() {
 	}
@@ -22,7 +20,6 @@ public:
 	virtual int writeImage() = 0;
 	virtual int format(int) = 0;
 	virtual int getClassType()= 0;
-
 
 	inline void setBufferSize(int bufferSize) {
 		if (bufferSize > 0) {
@@ -54,11 +51,6 @@ public:
 	inline void setOverwrite(bool overwrite = false) {
 		this->overwrite = overwrite;
 	}
-
-	inline std::exception* getException()  {
-		return ex;
-	}
-
 };
 
 #endif /* IMAGEINTERFACE_HPP_ */
