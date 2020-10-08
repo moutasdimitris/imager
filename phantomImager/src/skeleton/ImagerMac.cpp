@@ -15,14 +15,19 @@ int ImagerMac::takeImage() {
 	std::string str = "dd if=\"" + this->disk + "\" of=\"" + this->imgFile
 			+ "\"  bs=" + std::to_string(this->bufferSize) + "m conv=sync";
 	std::string str1 = "diskutil unmountDisk " + this->disk;
-	this->ex= NULL;
+	if (this->ex != NULL) {
+		delete (this->ex);
+		this->ex = NULL;
+	}
 	try {
-		system(str1.c_str());
-		system(str.c_str());
-		result = 1;
+		result = system(str1.c_str());
+		if (result == 0) {
+			system(str.c_str());
+			result = 1;
+		}
 	} catch (std::exception &e) {
 		std::cout << "'takeImage' throwed: " << e.what() << '\n';
-		this->ex= &e;
+		this->ex = &e;
 	}
 	return result;
 }
@@ -33,14 +38,19 @@ int ImagerMac::writeImage() {
 	std::string str = "dd if=\"" + this->imgFile + "\" of=\"" + this->disk
 			+ "\"  bs=" + std::to_string(this->bufferSize) + "m conv=sync";
 	std::string str1 = "diskutil unmountDisk " + this->disk;
-	this->ex= NULL;
+	if (this->ex != NULL) {
+		delete (this->ex);
+		this->ex = NULL;
+	}
 	try {
-		system(str1.c_str());
-		system(str.c_str());
-		result = 1;
+		result = system(str1.c_str());
+		if (result == 0) {
+			system(str.c_str());
+			result = 1;
+		}
 	} catch (std::exception &e) {
 		std::cout << "'writingeImage' throwed: " << e.what() << '\n';
-		this->ex= &e;
+		this->ex = &e;
 	}
 	return result;
 }
@@ -49,21 +59,23 @@ int ImagerMac::format(int ch) {
 	int result = 0;
 	std::cout << "Formatting the USB....\n";
 	std::string str = "";
-	this->ex= NULL;
+	if (this->ex != NULL) {
+		delete (this->ex);
+		this->ex = NULL;
+	}
 	try {
-		if (ch== 0){
-			str= "diskutil eraseDisk APFS drive " + this->disk;
-		}else if (ch== 1){
-			str= "diskutil eraseDisk HFS+ drive " + this->disk;
-		}else{
-			str= "diskutil eraseDisk ExFat drive " + this->disk;
+		if (ch == 0) {
+			str = "diskutil eraseDisk APFS drive " + this->disk;
+		} else if (ch == 1) {
+			str = "diskutil eraseDisk HFS+ drive " + this->disk;
+		} else {
+			str = "diskutil eraseDisk ExFat drive " + this->disk;
 		}
-		result= system(str.c_str());
-	}catch (std::exception &e) {
+		result = system(str.c_str());
+	} catch (std::exception &e) {
 		std::cout << "formattingUSB throwed: " << e.what() << "\n";
-		this->ex= &e;
+		this->ex = &e;
 	}
 	return result;
 }
-
 

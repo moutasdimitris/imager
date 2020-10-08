@@ -12,12 +12,12 @@ int main(int argc, char **argv) {
 	 */
 //	std::string disk = "G:\\";
 //	std::string imgFile = "C:\\Users\\mouta\\Desktop\\img2.wim";
-
 	/***
 	 * MacOS paths
 	 */
-	std::string disk= "/dev/rdisk2";
-	std::string imgFile= "/Users/root1/Downloads/ubuntu-20.04-desktop-amd64.iso";
+	std::string disk = "/dev/rdisk2";
+	std::string imgFile =
+			"/Users/root1/Downloads/ubuntu-20.04-desktop-amd64.iso";
 	int result = 0;
 	Imager *imager = NULL;
 	try {
@@ -42,10 +42,10 @@ int main(int argc, char **argv) {
 		std::cin >> choice;
 		if (choice == 0) {
 			result = imager->format(0);
-		} else if (choice== 1){
+		} else if (choice == 1) {
 			result = imager->format(1);
-		}else if (choice== 2){
-			result= imager->format(2);
+		} else if (choice == 2) {
+			result = imager->format(2);
 		}
 		std::cout << "formatting result:'" << result << "'\n";
 	} catch (std::exception &e) {

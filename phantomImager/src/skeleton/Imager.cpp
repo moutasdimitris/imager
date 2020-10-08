@@ -35,13 +35,13 @@ void Imager::setBufferSize(int bs) {
 }
 
 void Imager::getOsName() {
-	#ifdef _WIN32
+#ifdef _WIN32
 		imager= new ImagerWin();
 	#elif  _WIN64
 		imager= new ImagerWin();
 	#elif __APPLE__ || __MACH__
-		imager= new ImagerMac();
-	#elif  __linux__
+	imager = new ImagerMac();
+#elif  __linux__
 		imager= new ImagerUnix();
 	#elif __FreeBSD__
 		imager= new ImagerUnix();

@@ -14,7 +14,10 @@ int ImagerUnix::takeImage() {
 	std::cout << "Taking image...\n";
 	std::string str = "dd if=\"" + this->disk + "\" of=\"" + this->imgFile
 			+ "\"  bs=" + std::to_string(this->bufferSize) + "K conv=sync";
-	this->ex= NULL;
+	if (this->ex != NULL) {
+		delete (this->ex);
+		this->ex = NULL;
+	}
 	try {
 		result = system(str.c_str());
 	} catch (std::exception &e) {
@@ -29,15 +32,15 @@ int ImagerUnix::writeImage() {
 	std::cout << "Writing  image...\n";
 	std::string str = "dd if=\"" + this->imgFile + "\" of=\"" + this->disk
 			+ "\"  bs=" + std::to_string(this->bufferSize) + "K oflag=sync";
-	if(this->ex!= NULL){
-		delete(this->ex);
-		this->ex= NULL;
+	if (this->ex != NULL) {
+		delete (this->ex);
+		this->ex = NULL;
 	}
 	try {
 		result = system(str.c_str());
 	} catch (std::exception &e) {
 		std::cout << "'writingeImage' throwed: " << e.what() << '\n';
-		this->ex= &e;
+		this->ex = &e;
 	}
 	return result;
 }
@@ -48,7 +51,10 @@ int ImagerUnix::format(int ch) {
 	std::string unmount = "umount " + this->disk;
 	std::string mount = "mount " + this->disk + " /mnt";
 	std::cout << "Formatting the USB....\n";
-	this->ex= NULL;
+	if (this->ex != NULL) {
+		delete (this->ex);
+		this->ex = NULL;
+	}
 	try {
 		if (ch == 0) {
 			str = "mkfs.ntfs " + this->disk;
@@ -64,7 +70,7 @@ int ImagerUnix::format(int ch) {
 		}
 	} catch (std::exception &e) {
 		std::cout << "'formattingImage' throwed: " << e.what() << '\n';
-		this->ex= &e;
+		this->ex = &e;
 	}
 	return result;
 }
