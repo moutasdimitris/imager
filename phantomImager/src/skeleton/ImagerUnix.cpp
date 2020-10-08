@@ -11,7 +11,7 @@ ImagerUnix::~ImagerUnix() {
 
 int ImagerUnix::takeImage() {
 	int result = 0;
-	std::cout << "Taking  image...\n";
+	std::cout << "Taking image...\n";
 	std::string str = "dd if=\"" + this->disk + "\" of=\"" + this->imgFile
 			+ "\"  bs=" + std::to_string(this->bufferSize) + "K conv=sync";
 	this->ex= NULL;
@@ -29,7 +29,10 @@ int ImagerUnix::writeImage() {
 	std::cout << "Writing  image...\n";
 	std::string str = "dd if=\"" + this->imgFile + "\" of=\"" + this->disk
 			+ "\"  bs=" + std::to_string(this->bufferSize) + "K oflag=sync";
-	this->ex= NULL;
+	if(this->ex!= NULL){
+		delete(this->ex);
+		this->ex= NULL;
+	}
 	try {
 		result = system(str.c_str());
 	} catch (std::exception &e) {

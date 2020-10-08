@@ -55,7 +55,7 @@ public:
 		this->overwrite = overwrite;
 	}
 
-	inline std::exception*& getException()  {
+	inline std::exception* getException()  {
 		return ex;
 	}
 
