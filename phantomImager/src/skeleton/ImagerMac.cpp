@@ -17,8 +17,7 @@ int ImagerMac::takeImage() {
 	std::string str1 = "diskutil unmountDisk " + this->disk;
 	result = system(str1.c_str());
 	if (result == 0) {
-		system(str.c_str());
-		result = 1;
+		result = system(str.c_str());
 	}
 	return result;
 }
@@ -31,8 +30,7 @@ int ImagerMac::writeImage() {
 	std::string str1 = "diskutil unmountDisk " + this->disk;
 	result = system(str1.c_str());
 	if (result == 0) {
-		system(str.c_str());
-		result = 1;
+		result = system(str.c_str());
 	}
 	return result;
 }
